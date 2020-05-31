@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include
+END
+lzio.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lzio.h
+END
+llimits.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/llimits.h
+END
+ldo.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/ldo.h
+END
+lua.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lua.h
+END
+lua.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lua.hpp
+END
+lstring.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lstring.h
+END
+lobject.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lobject.h
+END
+lundump.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lundump.h
+END
+sqlite3.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/sqlite3.h
+END
+lapi.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lapi.h
+END
+lcode.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lcode.h
+END
+luaconf.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/luaconf.h
+END
+lmem.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lmem.h
+END
+ILuaModuleManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/ILuaModuleManager.h
+END
+ltm.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/ltm.h
+END
+lstate.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lstate.h
+END
+lvm.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lvm.h
+END
+lauxlib.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lauxlib.h
+END
+ldebug.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/ldebug.h
+END
+ltable.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/ltable.h
+END
+llex.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/llex.h
+END
+lgc.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lgc.h
+END
+lfunc.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lfunc.h
+END
+lparser.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lparser.h
+END
+lualib.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lualib.h
+END
+lopcodes.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/include/lopcodes.h
+END

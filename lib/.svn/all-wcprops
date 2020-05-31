@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/lib
+END
+sqlite3.lib
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/lib/sqlite3.lib
+END
+lua5.1.lib
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/lib/lua5.1.lib
+END
+lua5.1d.lib
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/lib/lua5.1d.lib
+END
+sqlite3.exp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/lib/sqlite3.exp
+END
+lua5.1.exp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/lib/lua5.1.exp
+END
+lua5.1d.exp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/lib/lua5.1d.exp
+END

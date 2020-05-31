@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/linux
+END
+sclinux.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/linux/sclinux.h
+END
+getch.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/linux/getch.c
+END
+binreloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/linux/binreloc.c
+END
+getch.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/linux/getch.h
+END
+binreloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/730/branches/1.0/optional/amx/src/linux/binreloc.h
+END

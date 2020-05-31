@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\amx">
+      <UniqueIdentifier>{af367186-aa93-46e2-980e-b18e699e0f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\amx">
+      <UniqueIdentifier>{dc71f9e4-9f0e-40df-9c88-20a016a683f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{a7618782-7578-4ed6-8e0f-9a204f90f3df}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ml_base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="syscalls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\amx.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\amxaux.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\amxcons.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\amxcore.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\amxfile.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\amxstring.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\amxtime.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+    <ClCompile Include="amx\float.c">
+      <Filter>Source Files\amx</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ml_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="amx\amx.h">
+      <Filter>Header Files\amx</Filter>
+    </ClInclude>
+    <ClInclude Include="amx\amxaux.h">
+      <Filter>Header Files\amx</Filter>
+    </ClInclude>
+    <ClInclude Include="amx\amxcons.h">
+      <Filter>Header Files\amx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ILuaModuleManager.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lauxlib.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lstate.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\luaconf.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lualib.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sqlite3.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="king.rc" />
+  </ItemGroup>
+</Project>
