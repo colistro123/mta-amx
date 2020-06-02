@@ -42,5 +42,6 @@ extern "C"
 #include "ml_base.h"
 #include "util.h"
 #include "CFunctions.h"
+#include "Plugins.h"
 
 #endif

@@ -35,7 +35,8 @@ extern lua_State *mainVM;
 
 map< AMX *, AMXPROPS > loadedAMXs;
 map< AMX *, map< int, sqlite3 * > > loadedDBs;		// amx => (dbID => db)
-map< string, HMODULE > loadedPlugins;
+//map< string, HMODULE, int > loadedPlugins;
+std::vector<_PluginList> loadedPlugins;
 
 AMX *suspendedAMX = NULL;
 
@@ -44,7 +45,8 @@ int CFunctions::amxLoadPlugin(lua_State *luaVM) {
 	static const char *requiredExports[] = { "Load", "AmxLoad", "AmxUnload", "Unload", 0 };
 
 	const char *pluginName = luaL_checkstring(luaVM, 1);
-	if(!pluginName || loadedPlugins.find(pluginName) != loadedPlugins.end() || !isSafePath(pluginName)) {
+	PluginList plugin = getLoadedPluginByName(pluginName);
+	if(!pluginName || plugin.module != nullptr || !isSafePath(pluginName)) {
 		lua_pushboolean(luaVM, 0);
 		return 1;
 	}
@@ -80,8 +82,7 @@ int CFunctions::amxLoadPlugin(lua_State *luaVM) {
 	Load_t *pfnLoad = (Load_t *)getProcAddr(hPlugin, "Load");
 	pfnLoad(pluginInitData);
 
-	loadedPlugins[pluginName] = hPlugin;
-
+	addPluginToList(pluginName, hPlugin, nullptr);
 	lua_pushboolean(luaVM, 1);
 	return 1;
 }
@@ -89,7 +90,8 @@ int CFunctions::amxLoadPlugin(lua_State *luaVM) {
 // amxIsPluginLoaded(pluginName)
 int CFunctions::amxIsPluginLoaded(lua_State *luaVM) {
 	const char *pluginName = luaL_checkstring(luaVM, 1);
-	if(loadedPlugins.find(pluginName) != loadedPlugins.end())
+	PluginList plugin = getLoadedPluginByName(pluginName);
+	if(plugin.module != nullptr)
 		lua_pushboolean(luaVM, 1);
 	else
 		lua_pushboolean(luaVM, 0);
@@ -128,8 +130,9 @@ int CFunctions::amxLoad(lua_State *luaVM) {
 	amx_TimeInit(amx);
 	amx_FileInit(amx);
 	err = amx_SAMPInit(amx);
-	for(map< string, HMODULE >::iterator it = loadedPlugins.begin(); it != loadedPlugins.end(); it++) {
-		AmxLoad_t* pfnAmxLoad = (AmxLoad_t*)getProcAddr(it->second, "AmxLoad");
+	//for(map< string, HMODULE, int >::iterator it = loadedPlugins.begin(); it != loadedPlugins.end(); it++) {
+	for (const auto& plugin : loadedPlugins) {
+		AmxLoad_t* pfnAmxLoad = (AmxLoad_t*)getProcAddr(plugin.module, "AmxLoad");
 		err = pfnAmxLoad(amx);
 	}
 
@@ -319,8 +322,9 @@ int CFunctions::amxUnload(lua_State *luaVM) {
 		return 1;
 	}
 	// Call all plugins' AmxUnload function
-	for(map< string, HMODULE >::iterator piIt = loadedPlugins.begin(); piIt != loadedPlugins.end(); piIt++) {
-		AmxUnload_t *pfnAmxUnload = (AmxUnload_t*)getProcAddr(piIt->second, "AmxUnload");
+	//for(map< string, HMODULE, int >::iterator piIt = loadedPlugins.begin(); piIt != loadedPlugins.end(); piIt++) {
+	for (const auto& plugin : loadedPlugins) {
+		AmxUnload_t *pfnAmxUnload = (AmxUnload_t*)getProcAddr(plugin.module, "AmxUnload");
 		pfnAmxUnload(amx);
 	}
 	// Close any open databases
@@ -342,8 +346,9 @@ int CFunctions::amxUnload(lua_State *luaVM) {
 
 // amxUnloadAllPlugins()
 int CFunctions::amxUnloadAllPlugins(lua_State *luaVM) {
-	for(map< string, HMODULE >::iterator it = loadedPlugins.begin(); it != loadedPlugins.end(); it++)
-		freeLib(it->second);
+	//for(map< string, HMODULE, int >::iterator it = loadedPlugins.begin(); it != loadedPlugins.end(); it++)
+	for (const auto& plugin : loadedPlugins)
+		freeLib(plugin.module);
 	loadedPlugins.clear();
 
 	lua_pushboolean(luaVM, 1);

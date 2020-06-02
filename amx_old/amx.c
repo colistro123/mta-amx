@@ -1726,33 +1726,33 @@ int AMXAPI amx_GetPublic(AMX* amx, int index, char* funcname)
 	return AMX_ERR_NONE;
 }
 
-int AMXAPI amx_FindPublic(AMX* amx, const char* name, int* index)
+int AMXAPI amx_FindPublic(AMX *amx, const char *name, int *index)
 {
-	int first, last, mid, result;
-	char pname[sNAMEMAX + 1];
+  int first,last,mid,result;
+  char pname[sNAMEMAX+1];
 
-	amx_NumPublics(amx, &last);
-	last--;       /* last valid index is 1 less than the number of functions */
-	first = 0;
-	/* binary search */
-	while (first <= last) {
-		mid = (first + last) / 2;
-		amx_GetPublic(amx, mid, pname);
-		result = strcmp(pname, name);
-		if (result > 0) {
-			last = mid - 1;
-		}
-		else if (result < 0) {
-			first = mid + 1;
-		}
-		else {
-			*index = mid;
-			return AMX_ERR_NONE;
-		} /* if */
-	} /* while */
-	/* not found, set to an invalid index, so amx_Exec() will fail */
-	*index = INT_MAX;
-	return AMX_ERR_NOTFOUND;
+  amx_NumPublics(amx, &last);
+  last--;       /* last valid index is 1 less than the number of functions */
+  first=0;
+  /* binary search */
+  while (first<=last) {
+    mid=(first+last)/2;
+    amx_GetPublic(amx,mid,pname,NULL);
+    result=strcmp(pname,name);
+    if (result>0) {
+      last=mid-1;
+    } else if (result<0) {
+      first=mid+1;
+    } else {
+      *index=mid;
+      return AMX_ERR_NONE;
+    } /* if */
+  } /* while */
+  /* not found, set to an invalid index, so amx_Exec() on this index will fail
+   * with an error
+   */
+  *index=INT_MAX;
+  return AMX_ERR_NOTFOUND;
 }
 #endif /* AMX_XXXPUBLICS */
 
@@ -3649,6 +3649,21 @@ int AMXAPI amx_Exec(AMX *amx, cell *retval, int index)
   cell pri,alt,stk,frm,hea;
   cell reset_stk, reset_hea, *cip;
   int num,i;
+
+  char pname[32];
+  *pname = 0;
+  if (index != 0) {
+	  amx_GetNative(amx, index, pname);
+	  if (!strstr(pname, "sscanf") && !strstr(pname, "CreateDir"))
+		  printf("%s\n", pname);
+
+  }
+  if (strstr(pname, "Business")) {
+	  printf("business");
+  }
+	
+ 
+
   #if !(defined ASM32 || defined JIT)
     cell op,offs,val;
   #endif

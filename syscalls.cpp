@@ -6,7 +6,7 @@ extern ILuaModuleManager10 *pModuleManager;
 
 extern lua_State *mainVM;
 extern map < AMX *, AMXPROPS > loadedAMXs;
-extern map < string, HMODULE > loadedPlugins;
+//extern map < string, HMODULE > loadedPlugins;
 
 AMX_NATIVE_INFO *sampNatives = NULL;
 
@@ -15,6 +15,15 @@ static cell AMX_NATIVE_CALL n_samp(AMX *amx, const cell *params) {
 	*fnName = 0;
 	if(amx_GetNative(amx, *(cell *)(amx->code + amx->cip - sizeof(cell)), fnName) != AMX_ERR_NONE)
 		return 0;
+
+	int x = 0;
+	if (strstr("kick", fnName)) {
+		printf("Kickeddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+		getchar();
+		x = 1;
+		x = 2;
+		return 0;
+	}
 
 	int mainTop = lua_gettop(mainVM);
 

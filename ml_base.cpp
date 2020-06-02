@@ -24,6 +24,7 @@ using namespace std;
 ILuaModuleManager10 *pModuleManager = NULL;
 lua_State *mainVM = NULL;
 extern map < AMX *, AMXPROPS > loadedAMXs;
+//extern map < string, HMODULE > loadedPlugins;
 
 enum PLUGIN_DATA_TYPE
 {
@@ -194,11 +195,11 @@ MTAEXPORT void RegisterFunctions ( lua_State * luaVM )
 		pModuleManager->RegisterFunction(luaVM, "amxVersionString", CFunctions::amxVersionString);
 		
 
-		stackDump(luaVM);
+		//stackDump(luaVM);
 
-		//string resName;
-		//if(!pModuleManager->GetResourceName(luaVM, resName) || resName.compare("amx"))
-		//	return;
+		string resName;
+		if(!pModuleManager->GetResourceName(luaVM, resName) || resName.compare("amx"))
+			return;
 
 		mainVM = luaVM;
 		pModuleManager->RegisterFunction(luaVM, "amxLoadPlugin", CFunctions::amxLoadPlugin);
@@ -223,8 +224,18 @@ MTAEXPORT void RegisterFunctions ( lua_State * luaVM )
 	}
 }
 
+
+//typedef void (STDCALL PluginProcessTick_t)();
+
+typedef void (STDCALL PluginProcessTick_t)      (void);
+
 MTAEXPORT bool DoPulse ( void )
 {
+	for (_PluginList& plugin : loadedPlugins) {
+		PluginProcessTick_t* pfnAmxProcessTick = (PluginProcessTick_t*)plugin.processtickAddress;// tryGetProcAddr(plugin, "ProcessTick");
+		if (plugin.processtickAddress != nullptr)
+			pfnAmxProcessTick();
+	}
 	return true;
 }
 
