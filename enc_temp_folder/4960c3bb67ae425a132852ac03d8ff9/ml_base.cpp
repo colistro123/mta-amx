@@ -24,6 +24,7 @@ using namespace std;
 ILuaModuleManager10 *pModuleManager = NULL;
 lua_State *mainVM = NULL;
 extern map < AMX *, AMXPROPS > loadedAMXs;
+//extern map < string, HMODULE > loadedPlugins;
 
 enum PLUGIN_DATA_TYPE
 {
@@ -140,6 +141,50 @@ int AMXCallPublicGameMode(char *fnName) {
 	return 0;
 }
 
+#define _ITERATOR_DEBUG_LEVEL 0
+
+static void stackDump(lua_State* L) {
+	int i;
+	int top = lua_gettop(L);
+	char buff[1024];
+	for (i = 1; i <= top; i++) {  /* repeat for each level */
+		int t = lua_type(L, i);
+		switch (t) {
+
+		case LUA_TSTRING:  /* strings */
+			printf("`%s'", lua_tostring(L, i));
+			break;
+
+		case LUA_TBOOLEAN:  /* booleans */
+			printf(lua_toboolean(L, i) ? "true" : "false");
+			break;
+
+		case LUA_TNUMBER:  /* numbers */
+			printf("%g", lua_tonumber(L, i));
+			break;
+
+		default:  /* other values */
+			//printf("%s", lua_typename(L, t));
+			//if (!strcmp(lua_typename(L, t), "table")) {
+				lua_pushnil(L);
+				while (lua_next(L, -2))
+				{
+					const char* key = lua_tostring(L, -2);
+					double val = lua_tonumber(L, -1);
+					lua_pop(L, 1);
+					sprintf(buff, "%s = %s\n", key, val);
+					OutputDebugString(buff);
+				}
+			//}
+
+			break;
+
+		}
+		printf("  ");  /* put a separator */
+	}
+	printf("\n");  /* end the listing */
+}
+
 MTAEXPORT void RegisterFunctions ( lua_State * luaVM )
 {
 	if ( pModuleManager && luaVM )
@@ -148,6 +193,9 @@ MTAEXPORT void RegisterFunctions ( lua_State * luaVM )
 		pModuleManager->RegisterFunction(luaVM, "amxRegisterLuaPrototypes", CFunctions::amxRegisterLuaPrototypes);
 		pModuleManager->RegisterFunction(luaVM, "amxVersion", CFunctions::amxVersion);
 		pModuleManager->RegisterFunction(luaVM, "amxVersionString", CFunctions::amxVersionString);
+		
+
+		//stackDump(luaVM);
 
 		string resName;
 		if(!pModuleManager->GetResourceName(luaVM, resName) || resName.compare("amx"))

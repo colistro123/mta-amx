@@ -35,6 +35,7 @@ extern lua_State *mainVM;
 
 map< AMX *, AMXPROPS > loadedAMXs;
 map< AMX *, map< int, sqlite3 * > > loadedDBs;		// amx => (dbID => db)
+//map< string, HMODULE, int > loadedPlugins;
 std::vector<_PluginList> loadedPlugins;
 
 AMX *suspendedAMX = NULL;
@@ -129,7 +130,7 @@ int CFunctions::amxLoad(lua_State *luaVM) {
 	amx_TimeInit(amx);
 	amx_FileInit(amx);
 	err = amx_SAMPInit(amx);
-
+	//for(map< string, HMODULE, int >::iterator it = loadedPlugins.begin(); it != loadedPlugins.end(); it++) {
 	for (const auto& plugin : loadedPlugins) {
 		AmxLoad_t* pfnAmxLoad = (AmxLoad_t*)getProcAddr(plugin.module, "AmxLoad");
 		err = pfnAmxLoad(amx);
@@ -321,6 +322,7 @@ int CFunctions::amxUnload(lua_State *luaVM) {
 		return 1;
 	}
 	// Call all plugins' AmxUnload function
+	//for(map< string, HMODULE, int >::iterator piIt = loadedPlugins.begin(); piIt != loadedPlugins.end(); piIt++) {
 	for (const auto& plugin : loadedPlugins) {
 		AmxUnload_t *pfnAmxUnload = (AmxUnload_t*)getProcAddr(plugin.module, "AmxUnload");
 		pfnAmxUnload(amx);
@@ -344,9 +346,9 @@ int CFunctions::amxUnload(lua_State *luaVM) {
 
 // amxUnloadAllPlugins()
 int CFunctions::amxUnloadAllPlugins(lua_State *luaVM) {
+	//for(map< string, HMODULE, int >::iterator it = loadedPlugins.begin(); it != loadedPlugins.end(); it++)
 	for (const auto& plugin : loadedPlugins)
 		freeLib(plugin.module);
-
 	loadedPlugins.clear();
 
 	lua_pushboolean(luaVM, 1);
